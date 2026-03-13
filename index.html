@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Should I Make? 🍳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #faf7f2;
+      --card: #ffffff;
+      --text: #2c2c2c;
+      --text-secondary: #6b6b6b;
+      --accent: #e85d3a;
+      --accent-hover: #d14e2d;
+      --tag-bg: #fef0eb;
+      --tag-text: #c24a28;
+      --border: #e8e4de;
+      --shadow: 0 2px 20px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1.5rem 1rem;
+      max-width: 600px;
+    }
+
+    header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.5;
+    }
+
+    .source-pills {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .source-pills span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 100px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
+    .btn-generate {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 2rem auto;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-family: inherit;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(232, 93, 58, 0.3);
+    }
+
+    .btn-generate:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(232, 93, 58, 0.4);
+    }
+
+    .btn-generate:active { transform: translateY(0); }
+
+    .btn-generate.spinning .icon { animation: spin 0.6s ease; }
+
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .recipe-card {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      max-width: 560px;
+      width: calc(100% - 2rem);
+      margin: 0 auto 3rem;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .recipe-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .recipe-card .thumbnail {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: none;
+    }
+
+    .recipe-card .content {
+      padding: 2rem;
+    }
+
+    .recipe-card .tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .recipe-card .tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
+    .recipe-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .recipe-card .description {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .recipe-card h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    .ingredients-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ingredient {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.75rem;
+      background: var(--bg);
+      border-radius: 8px;
+      color: var(--text);
+    }
+
+    .recipe-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .recipe-link:hover { gap: 0.7rem; }
+
+    .api-badge {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .api-badge.visible { opacity: 1; }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 2.2rem; }
+      header { padding: 2rem 1rem 0.5rem; }
+      .recipe-card h2 { font-size: 1.5rem; }
+      .recipe-card .content { padding: 1.5rem; }
+      .recipe-card .thumbnail { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>What Should I Make? 🍳</h1>
+  <p>Stuck in a dinner rut? Let fate decide. Recipes inspired by the best food publications on the internet.</p>
+  <div class="source-pills">
+    <span>Delish</span>
+    <span>NYT Cooking</span>
+    <span>Bon Appétit</span>
+    <span>+ Surprise Picks</span>
+  </div>
+</header>
+
+<button class="btn-generate" onclick="generateRecipe()">
+  <span class="icon">🎲</span> Give Me a Recipe
+</button>
+
+<div class="recipe-card" id="recipeCard">
+  <img class="thumbnail" id="thumbnail" alt="">
+  <div class="content">
+    <div class="tags" id="tags"></div>
+    <h2 id="recipeName"></h2>
+    <p class="description" id="description"></p>
+    <h3>Ingredients</h3>
+    <div class="ingredients-grid" id="ingredients"></div>
+    <a class="recipe-link" id="recipeLink" href="#" target="_blank" rel="noopener">
+      View Full Recipe →
+    </a>
+  </div>
+</div>
+
+<div class="api-badge" id="apiBadge"></div>
+
+<footer>
+  Built with ❤️ and an empty stomach
+</footer>
+
+<script>
+const CURATED = [
+  {name:"Marry Me Chicken",source:"Delish",category:"Weeknight Dinner",description:"Creamy sun-dried tomato sauce over pan-seared chicken thighs with fresh basil. The dish that launched a thousand proposals.",ingredients:["chicken thighs","sun-dried tomatoes","heavy cream","parmesan","garlic","basil","red pepper flakes","chicken broth"],url:"https://www.delish.com/cooking/recipe-ideas/a19636089/marry-me-chicken-recipe/"},
+  {name:"Sheet-Pan Chicken Fajitas",source:"Bon Appétit",category:"Weeknight Dinner",description:"Smoky, charred peppers and onions with perfectly spiced chicken — all on one sheet pan. Minimal effort, maximum flavor.",ingredients:["chicken breasts","bell peppers","onion","cumin","chili powder","lime","tortillas","sour cream","cilantro"],url:"https://www.bonappetit.com/recipe/sheet-pan-chicken-fajitas"},
+  {name:"Cacio e Pepe",source:"NYT Cooking",category:"Pasta",description:"Three ingredients. Infinite satisfaction. The Roman classic that proves simplicity is the ultimate sophistication.",ingredients:["spaghetti or tonnarelli","pecorino romano","black pepper"],url:"https://cooking.nytimes.com/recipes/1022895-cacio-e-pepe"},
+  {name:"Crispy Smashed Potatoes",source:"Bon Appétit",category:"Side Dish",description:"Boiled, smashed, then roasted until impossibly crispy. Topped with sour cream, chives, and flaky salt.",ingredients:["baby potatoes","olive oil","garlic","sour cream","chives","flaky salt"],url:"https://www.bonappetit.com/recipe/crispy-smashed-potatoes"},
+  {name:"Birria Tacos",source:"Delish",category:"Weekend Project",description:"Slow-braised chili-spiced beef tucked into crispy, consommé-dipped tortillas. Worth every minute of the wait.",ingredients:["chuck roast","guajillo chiles","ancho chiles","onion","garlic","cumin","oregano","corn tortillas","oaxaca cheese","cilantro","lime"],url:"https://www.delish.com/cooking/recipe-ideas/a35047289/birria-tacos-recipe/"},
+  {name:"Marcella Hazan's Tomato Sauce",source:"NYT Cooking",category:"Basics",description:"Canned tomatoes, butter, and an onion. That's it. The most legendary simple sauce in cooking history.",ingredients:["canned whole tomatoes","butter","onion","salt"],url:"https://cooking.nytimes.com/recipes/1015178-marcella-hazans-tomato-sauce"},
+  {name:"Brown Butter Chocolate Chip Cookies",source:"NYT Cooking",category:"Baking",description:"Nutty brown butter, two types of chocolate, and a generous hit of sea salt. Chewy centers, crispy edges.",ingredients:["butter","flour","brown sugar","eggs","vanilla","dark chocolate","milk chocolate","flaky sea salt","baking soda"],url:"https://cooking.nytimes.com/recipes/1022358-brown-butter-chocolate-chip-cookies"},
+  {name:"Spicy Vodka Rigatoni",source:"Bon Appétit",category:"Pasta",description:"The pasta that broke the internet. Creamy, spicy, tomatoey, with a vodka kick that makes everything better.",ingredients:["rigatoni","vodka","tomato paste","heavy cream","red pepper flakes","garlic","parmesan","basil","butter"],url:"https://www.bonappetit.com/recipe/rigatoni-with-easy-vodka-sauce"},
+  {name:"Chicken Tikka Masala",source:"Delish",category:"Weeknight Dinner",description:"Tender marinated chicken in a rich, spiced tomato-cream sauce. Better than takeout, and your kitchen will smell incredible.",ingredients:["chicken thighs","yogurt","garam masala","turmeric","cumin","tomato sauce","heavy cream","ginger","garlic","cilantro","rice"],url:"https://www.delish.com/cooking/recipe-ideas/a25091380/chicken-tikka-masala-recipe/"},
+  {name:"Caramelized Shallot Pasta",source:"NYT Cooking",category:"Pasta",description:"Deeply caramelized shallots melt into a savory-sweet sauce with balsamic, butter, and fresh herbs. Deceptively simple.",ingredients:["shallots","pasta","butter","balsamic vinegar","parmesan","thyme","red pepper flakes"],url:"https://cooking.nytimes.com/recipes/1021016-caramelized-shallot-pasta"},
+  {name:"Elote (Mexican Street Corn)",source:"Bon Appétit",category:"Side Dish",description:"Charred corn slathered in mayo, cotija, chili powder, and lime. Summer on a cob.",ingredients:["corn on the cob","mayonnaise","cotija cheese","chili powder","lime","cilantro"],url:"https://www.bonappetit.com/recipe/elote"},
+  {name:"Lemon Ricotta Pancakes",source:"Delish",category:"Breakfast",description:"Cloud-like pancakes with ricotta for fluffiness and lemon zest for brightness. Weekend brunch perfection.",ingredients:["ricotta","flour","eggs","lemon zest","lemon juice","sugar","baking powder","vanilla","butter","maple syrup"],url:"https://www.delish.com/cooking/recipe-ideas/a26871680/lemon-ricotta-pancakes-recipe/"},
+  {name:"Miso Salmon",source:"NYT Cooking",category:"Weeknight Dinner",description:"Sweet white miso glaze caramelizes under the broiler into a savory, slightly charred crust. 10 minutes active time.",ingredients:["salmon fillets","white miso","mirin","soy sauce","sugar","ginger","rice","scallions"],url:"https://cooking.nytimes.com/recipes/1013740-miso-glazed-salmon"},
+  {name:"One-Pot Creamy Tuscan Orzo",source:"Delish",category:"Weeknight Dinner",description:"Sun-dried tomatoes, spinach, and parmesan melt into creamy orzo. One pot, 25 minutes, zero complaints.",ingredients:["orzo","sun-dried tomatoes","spinach","garlic","chicken broth","heavy cream","parmesan","Italian seasoning"],url:"https://www.delish.com/cooking/recipe-ideas/a58723/tuscan-orzo-recipe/"},
+  {name:"Thai Basil Beef (Pad Krapow)",source:"Bon Appétit",category:"Weeknight Dinner",description:"Ground beef stir-fried with holy basil, chilies, and garlic. Served over rice with a crispy fried egg. Bangkok street food at home.",ingredients:["ground beef","Thai basil","Thai chilies","garlic","soy sauce","fish sauce","oyster sauce","sugar","egg","jasmine rice"],url:"https://www.bonappetit.com/recipe/thai-basil-beef"},
+  {name:"Basque Burnt Cheesecake",source:"NYT Cooking",category:"Baking",description:"Crustless, intentionally 'burnt,' impossibly creamy. The cheesecake that doesn't try to be perfect — and is.",ingredients:["cream cheese","sugar","eggs","heavy cream","flour","vanilla","salt"],url:"https://cooking.nytimes.com/recipes/1020778-basque-burnt-cheesecake"},
+  {name:"Green Goddess Salad",source:"Delish",category:"Salad",description:"The TikTok salad that actually lives up to the hype. Crunchy cabbage and cucumbers in a creamy herb dressing.",ingredients:["cabbage","cucumber","green onion","basil","chives","spinach","lemon juice","olive oil","rice vinegar","walnuts"],url:"https://www.delish.com/cooking/recipe-ideas/a39340986/green-goddess-salad-recipe/"},
+  {name:"Shakshuka",source:"NYT Cooking",category:"Breakfast",description:"Eggs poached in a spiced tomato-pepper sauce. Eaten with crusty bread for maximum sauce-sopping potential.",ingredients:["eggs","canned tomatoes","bell pepper","onion","garlic","cumin","paprika","cayenne","feta","cilantro","crusty bread"],url:"https://cooking.nytimes.com/recipes/1014721-shakshuka-with-feta"},
+  {name:"Crispy Rice Bowls with Salmon",source:"Bon Appétit",category:"Weeknight Dinner",description:"Sushi-restaurant-quality crispy rice topped with spicy salmon, avocado, and sriracha mayo. Addictive.",ingredients:["sushi rice","salmon","avocado","sriracha","mayo","soy sauce","rice vinegar","sesame seeds","nori","cucumber"],url:"https://www.bonappetit.com/recipe/crispy-rice-with-salmon"},
+  {name:"Mississippi Pot Roast",source:"Delish",category:"Weekend Project",description:"Chuck roast slow-cooked with ranch, au jus, butter, and pepperoncini. Sounds weird. Tastes legendary. Falls apart with a look.",ingredients:["chuck roast","ranch seasoning","au jus mix","butter","pepperoncini"],url:"https://www.delish.com/cooking/recipe-ideas/a55421/mississippi-pot-roast-recipe/"}
+];
+
+const MEAL_DB_URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+
+async function fetchMealDB() {
+  try {
+    const res = await fetch(MEAL_DB_URL);
+    const data = await res.json();
+    const meal = data.meals[0];
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) {
+      const ing = meal[`strIngredient${i}`];
+      const measure = meal[`strMeasure${i}`];
+      if (ing && ing.trim()) ingredients.push(`${(measure||'').trim()} ${ing.trim()}`.trim());
+    }
+    return {
+      name: meal.strMeal,
+      source: meal.strArea + ' cuisine',
+      category: meal.strCategory,
+      description: meal.strInstructions.split('\r\n').filter(Boolean).slice(0, 2).join(' ').slice(0, 250) + '...',
+      ingredients,
+      url: meal.strSource || meal.strYoutube || null,
+      thumbnail: meal.strMealThumb
+    };
+  } catch {
+    return CURATED[Math.floor(Math.random() * CURATED.length)];
+  }
+}
+
+async function generateRecipe() {
+  const btn = document.querySelector('.btn-generate');
+  btn.classList.add('spinning');
+  setTimeout(() => btn.classList.remove('spinning'), 600);
+
+  const card = document.getElementById('recipeCard');
+  const badge = document.getElementById('apiBadge');
+  card.classList.remove('visible');
+  badge.classList.remove('visible');
+
+  const useCurated = Math.random() < 0.7;
+  const recipe = useCurated
+    ? CURATED[Math.floor(Math.random() * CURATED.length)]
+    : await fetchMealDB();
+
+  setTimeout(() => {
+    const thumb = document.getElementById('thumbnail');
+    if (recipe.thumbnail) {
+      thumb.src = recipe.thumbnail;
+      thumb.style.display = 'block';
+    } else {
+      thumb.style.display = 'none';
+    }
+
+    document.getElementById('tags').innerHTML =
+      `<span class="tag">${recipe.source}</span><span class="tag">${recipe.category}</span>`;
+    document.getElementById('recipeName').textContent = recipe.name;
+    document.getElementById('description').textContent = recipe.description;
+    document.getElementById('ingredients').innerHTML =
+      recipe.ingredients.map(i => `<span class="ingredient">${i}</span>`).join('');
+
+    const link = document.getElementById('recipeLink');
+    if (recipe.url) {
+      link.href = recipe.url;
+      link.style.display = 'inline-flex';
+    } else {
+      link.style.display = 'none';
+    }
+
+    badge.textContent = useCurated ? '' : '✨ Surprise pick from TheMealDB';
+    badge.classList.toggle('visible', !useCurated);
+
+    card.classList.add('visible');
+  }, 300);
+}
+</script>
+
+</body>
+</html>
