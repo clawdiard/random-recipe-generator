@@ -1,0 +1,144 @@
+{
+  "restaurants": [
+    {
+      "name": "Adda",
+      "neighborhood": "Long Island City",
+      "cuisine": "Indian",
+      "yelp_url": "https://www.yelp.com/biz/adda-indian-canteen-long-island-city",
+      "website": "https://www.addanyc.com",
+      "signature_dish": {
+        "name": "Old Monk Dal",
+        "description": "Adda's legendary black lentil dal, slow-cooked for 24 hours until impossibly creamy. Named after the beloved Indian rum, it's rich, smoky, and the dish that put this spot on every best-of list.",
+        "ingredients": ["1 cup whole black urad dal (soaked overnight)", "3 tbsp butter", "2 tbsp heavy cream", "1 can (14oz) crushed tomatoes", "1 large onion, finely diced", "4 cloves garlic, minced", "1 inch ginger, grated", "1 tsp cumin seeds", "1 tsp Kashmiri chili powder", "1 tsp garam masala", "½ tsp turmeric", "Salt to taste", "Fresh cilantro for garnish"],
+        "instructions": ["Soak dal overnight, then drain and rinse.", "In a heavy pot or pressure cooker, cover dal with 4 cups water. Cook until completely soft and breaking apart (1 hour simmering or 30 min in pressure cooker).", "In a separate pan, heat 2 tbsp butter. Add cumin seeds and let them crackle.", "Add onion and cook until deeply golden, about 12 minutes.", "Add garlic and ginger, cook 2 minutes.", "Add tomatoes, chili powder, turmeric, and garam masala. Cook until oil separates, about 8 minutes.", "Add this masala to the cooked dal. Stir well and simmer on lowest heat for 30+ minutes, stirring occasionally.", "Finish with remaining butter, cream, and salt. The longer it simmers, the better it gets.", "Garnish with cilantro and a swirl of cream."],
+        "pro_tips": ["The secret is TIME — real dal makhani simmers for hours. Weekend project.", "Use a slow cooker on low for 8 hours for the most authentic texture.", "A pinch of dried fenugreek leaves (kasuri methi) at the end is the restaurant secret."]
+      }
+    },
+    {
+      "name": "Tatiana by Kwame Onwuachi",
+      "neighborhood": "Lincoln Center",
+      "cuisine": "Afro-Caribbean",
+      "yelp_url": "https://www.yelp.com/biz/tatiana-by-kwame-onwuachi-new-york",
+      "website": "https://www.tatiananyc.com",
+      "signature_dish": {
+        "name": "Jollof Rice with Suya-Spiced Prawns",
+        "description": "Chef Kwame Onwuachi's stunning take on West African jollof rice, topped with suya-spiced grilled prawns. The dish that earned Tatiana a James Beard Award.",
+        "ingredients": ["2 cups long-grain rice (rinsed)", "1 lb large prawns, peeled and deveined", "1 can (14oz) fire-roasted tomatoes", "1 red bell pepper, roughly chopped", "1 habanero pepper (whole, for flavor)", "1 large onion, diced", "3 tbsp tomato paste", "3 cloves garlic", "1 inch ginger", "2 cups chicken stock", "3 tbsp vegetable oil", "1 tsp smoked paprika", "1 tsp ground coriander", "1 tsp onion powder", "½ tsp cayenne", "2 tbsp ground peanuts", "1 tsp garlic powder", "Salt to taste"],
+        "instructions": ["Blend tomatoes, bell pepper, half the onion, garlic, and ginger into a smooth paste.", "Heat oil in a heavy-bottomed pot. Fry remaining onion until golden.", "Add tomato paste and cook 3 minutes until darkened.", "Pour in the blended tomato mixture. Cook on medium-high for 20 minutes, stirring often, until reduced and oil floats on top.", "Add stock, smoked paprika, and the whole habanero. Bring to a boil.", "Add rinsed rice, stir once, cover tightly. Cook on lowest heat for 25-30 minutes.", "For suya spice: mix ground peanuts, garlic powder, onion powder, cayenne, coriander, and salt.", "Coat prawns in suya spice. Grill or sear in a hot pan, 2 minutes per side.", "Fluff rice, remove habanero. Serve topped with suya prawns."],
+        "pro_tips": ["Don't stir the rice after the initial stir — you want the smoky bottom layer (the 'party jollof' crust).", "Toast the suya spice mix in a dry pan before coating the prawns for deeper flavor.", "If you can find scotch bonnet peppers, use those instead of habanero for authenticity."]
+      }
+    },
+    {
+      "name": "Hawksmoor",
+      "neighborhood": "Gramercy",
+      "cuisine": "Steakhouse",
+      "yelp_url": "https://www.yelp.com/biz/hawksmoor-new-york",
+      "website": "https://thehawksmoor.com/nyc",
+      "signature_dish": {
+        "name": "Bone-In Prime Rib with Dripping Fries",
+        "description": "London's legendary steakhouse brought their signature dry-aged prime rib to NYC. Cooked over charcoal, served with beef-dripping triple-cooked fries that are worth the trip alone.",
+        "ingredients": ["3-4 lb bone-in prime rib roast", "Flaky sea salt", "Coarsely ground black pepper", "2 lbs Yukon Gold potatoes", "Beef drippings or tallow (¼ cup for fries)", "Vegetable oil for frying", "2 tbsp softened butter", "Fresh horseradish", "1 cup crème fraîche", "1 tbsp Dijon mustard"],
+        "instructions": ["Remove prime rib from fridge 2 hours before cooking. Season generously with salt and pepper.", "Preheat oven to 250°F. Place rib on a rack in a roasting pan.", "Roast until internal temp reaches 120°F for medium-rare, about 3-4 hours.", "Rest for 30 minutes, tented with foil.", "For triple-cooked fries: cut potatoes into thick chips. Simmer in salted water until just tender (10 min). Drain and cool completely.", "Fry at 300°F for 5 minutes until pale and cooked through. Cool again.", "Final fry at 375°F until golden and crispy, 3-4 minutes.", "Toss hot fries with melted beef drippings and flaky salt.", "Mix crème fraîche, grated horseradish, and mustard for sauce.", "Sear the rested prime rib in a screaming hot cast iron pan for the crust."],
+        "pro_tips": ["The triple-cook method is non-negotiable — it's what makes these fries shatteringly crispy.", "If you can get beef tallow, use it for the final fry instead of vegetable oil.", "Dry-aging at home: salt the roast uncovered in the fridge for 3-4 days before cooking."]
+      }
+    },
+    {
+      "name": "L'Industrie Pizzeria",
+      "neighborhood": "Williamsburg",
+      "cuisine": "Pizza",
+      "yelp_url": "https://www.yelp.com/biz/lindustrie-pizzeria-brooklyn",
+      "website": "https://www.lindustriepizza.com",
+      "signature_dish": {
+        "name": "Burrata Pizza",
+        "description": "L'Industrie's most Instagrammed item — a perfect thin-crust pizza topped with a whole ball of burrata, cherry tomatoes, fresh basil, and Mike's Hot Honey. Simple, outrageous, iconic.",
+        "ingredients": ["1 lb pizza dough (homemade or store-bought)", "½ cup San Marzano tomato sauce", "1 ball fresh burrata (8oz)", "1 cup cherry tomatoes, halved", "Fresh basil leaves", "Hot honey (like Mike's Hot Honey)", "Extra-virgin olive oil", "Flaky sea salt", "Semolina flour for dusting"],
+        "instructions": ["Preheat oven as hot as it goes (500-550°F) with a pizza stone or steel inside for at least 1 hour.", "Stretch dough into a 12-inch round on a semolina-dusted surface.", "Spread a thin layer of tomato sauce, leaving a 1-inch border.", "Scatter cherry tomato halves over the sauce.", "Transfer to the hot stone. Bake 8-12 minutes until crust is charred and bubbly.", "Immediately place the whole burrata in the center of the hot pizza.", "Drizzle generously with hot honey and olive oil.", "Tear basil leaves over the top. Finish with flaky salt.", "Cut and serve immediately — the burrata should ooze when you slice through it."],
+        "pro_tips": ["Let the burrata come to room temperature before placing on the pizza.", "A pizza steel gets hotter than a stone and gives better char.", "The hot honey is essential — sweet, spicy, and creamy from the burrata is the magic trio."]
+      }
+    },
+    {
+      "name": "Don Angie",
+      "neighborhood": "West Village",
+      "cuisine": "Italian-American",
+      "yelp_url": "https://www.yelp.com/biz/don-angie-new-york",
+      "website": "https://www.donangie.com",
+      "signature_dish": {
+        "name": "Chrysanthemum Lasagna",
+        "description": "Don Angie's show-stopping pinwheel lasagna, sliced crosswise to reveal a chrysanthemum flower pattern. A visual masterpiece that also happens to taste incredible — layers of pasta, ricotta, mozzarella, and a slow-cooked meat sauce.",
+        "ingredients": ["1 lb fresh lasagna sheets", "2 cups whole-milk ricotta", "2 cups shredded mozzarella", "1 cup grated parmesan", "1 lb ground beef", "½ lb ground pork", "1 can (28oz) San Marzano tomatoes, crushed", "1 onion, finely diced", "4 cloves garlic, minced", "2 tbsp tomato paste", "1 cup red wine", "1 egg", "Fresh basil", "Olive oil", "Salt and pepper"],
+        "instructions": ["Make meat sauce: brown beef and pork in olive oil. Add onion, garlic, tomato paste. Deglaze with wine. Add tomatoes, simmer 1 hour.", "Mix ricotta with egg, half the parmesan, salt, pepper, and chopped basil.", "Lay out lasagna sheets. Spread thin layer of ricotta mixture, then meat sauce, then mozzarella.", "Roll each sheet up tightly into a cylinder.", "Slice each roll into 1.5-inch pinwheels.", "Spread a thin layer of meat sauce in a round baking dish.", "Arrange pinwheels cut-side up, packed tightly in concentric circles (this creates the chrysanthemum pattern).", "Spoon remaining sauce between the pinwheels. Top with remaining mozzarella and parmesan.", "Bake at 375°F covered for 30 minutes, then uncovered for 15 minutes until bubbly and golden.", "Let rest 10 minutes before serving."],
+        "pro_tips": ["Use a round dish — the concentric circles of pinwheels are what creates the flower pattern.", "Freeze the rolls for 20 minutes before slicing for cleaner cuts.", "Fresh pasta sheets work best — dried won't roll properly."]
+      }
+    },
+    {
+      "name": "Dhamaka",
+      "neighborhood": "Lower East Side",
+      "cuisine": "Indian (Regional)",
+      "yelp_url": "https://www.yelp.com/biz/dhamaka-new-york",
+      "website": "https://www.dhamakanyc.com",
+      "signature_dish": {
+        "name": "Champaran Meat",
+        "description": "Dhamaka's most talked-about dish — a fiery Bihar-style mutton curry cooked sealed in a clay pot (handi) with nothing but meat, mustard oil, and an avalanche of chilis. No water, no tomatoes. Just pure, intense flavor.",
+        "ingredients": ["2 lbs bone-in lamb or goat shoulder, cut into chunks", "⅓ cup mustard oil", "15 dried red chilis (Kashmiri for color, some Thai for heat)", "2 large onions, roughly sliced", "10 cloves garlic, smashed", "2 inches ginger, sliced", "1 tbsp cumin seeds", "4 green cardamom pods", "4 cloves", "1 cinnamon stick", "1 cup full-fat yogurt", "Salt to taste", "Flour dough for sealing (optional)"],
+        "instructions": ["Heat mustard oil in a heavy pot until it smokes, then cool slightly (this removes the raw flavor).", "Add whole spices — cumin, cardamom, cloves, cinnamon — and let them crackle.", "Add dried red chilis (break a few open for more heat) and toast 30 seconds.", "Add onions and cook until deeply browned, 15 minutes.", "Add garlic and ginger, cook 3 minutes.", "Add lamb pieces, sear on high heat until browned all over.", "Lower heat. Add yogurt one spoonful at a time, stirring between each addition.", "Season with salt. The meat will cook in its own juices and the yogurt.", "Cover tightly (traditionally sealed with dough). Cook on lowest heat for 2-3 hours.", "Do not open the lid until done. The steam does all the work.", "The result should be fall-off-the-bone tender with a concentrated, fiery sauce."],
+        "pro_tips": ["Goat is traditional and has more flavor than lamb, but lamb shoulder works great.", "The sealed lid is key — if your pot doesn't seal well, wrap the lid junction in foil.", "Serve with plain rice or thick rotis to balance the heat. This is NOT a mild dish."]
+      }
+    },
+    {
+      "name": "Theodora",
+      "neighborhood": "Fort Greene",
+      "cuisine": "Mediterranean",
+      "yelp_url": "https://www.yelp.com/biz/theodora-brooklyn",
+      "website": "https://www.theodoranyc.com",
+      "signature_dish": {
+        "name": "Whole Butterflied Trout with Herbs and Brown Butter",
+        "description": "Theodora's stunning whole trout, butterflied and pan-roasted until the skin is shatteringly crispy, finished with nutty brown butter, capers, and a shower of fresh herbs.",
+        "ingredients": ["2 whole trout, butterflied (ask your fishmonger)", "4 tbsp butter", "2 tbsp capers, drained", "1 lemon, half juiced, half sliced", "2 tbsp fresh parsley, chopped", "1 tbsp fresh dill, chopped", "1 tbsp fresh chives, minced", "2 cloves garlic, thinly sliced", "Olive oil", "Flaky sea salt and black pepper", "Flour for dusting"],
+        "instructions": ["Pat trout completely dry. Season flesh side with salt and pepper. Dust skin side lightly with flour.", "Heat a large skillet over medium-high. Add olive oil.", "Place trout skin-side down. Press gently with a spatula for the first minute to prevent curling.", "Cook without moving for 4-5 minutes until skin is deeply golden and crispy.", "Carefully flip. Cook flesh side just 1-2 minutes.", "Transfer to plates skin-side up.", "In the same pan, add butter. Cook over medium heat, swirling, until it foams and turns nutty brown (about 2 minutes).", "Add capers (they'll splatter — be ready), garlic slices, and lemon juice.", "Pour brown butter over the fish. Shower with herbs and flaky salt."],
+        "pro_tips": ["Dry fish = crispy skin. Pat it aggressively with paper towels.", "The flour dust is thin — just enough to help the skin crisp, not a coating.", "Don't rush the brown butter — it goes from brown to burnt in seconds. Watch the color and pull it off heat."]
+      }
+    },
+    {
+      "name": "Thai Diner",
+      "neighborhood": "Nolita",
+      "cuisine": "Thai-American",
+      "yelp_url": "https://www.yelp.com/biz/thai-diner-new-york",
+      "website": "https://www.thaidiner.com",
+      "signature_dish": {
+        "name": "Khao Soi",
+        "description": "Thai Diner's rich Northern Thai coconut curry noodle soup — a golden, fragrant broth loaded with egg noodles, tender chicken, crispy fried noodles on top, and pickled mustard greens on the side.",
+        "ingredients": ["1 lb boneless chicken thighs", "2 cans (14oz each) coconut milk", "2 cups chicken stock", "3 tbsp Thai red curry paste", "1 tbsp yellow curry powder", "1 tbsp turmeric", "2 tbsp fish sauce", "1 tbsp palm sugar or brown sugar", "1 lb fresh egg noodles", "Vegetable oil for frying", "4 shallots, sliced thin", "Lime wedges", "Pickled mustard greens", "Cilantro", "Chili oil"],
+        "instructions": ["Heat 2 tbsp oil in a pot. Fry curry paste, curry powder, and turmeric for 2 minutes until fragrant.", "Add one can of coconut milk (the thick part). Stir and cook 5 minutes until oil separates.", "Add chicken thighs, remaining coconut milk, and stock. Simmer 20 minutes until chicken is cooked.", "Remove chicken, shred it, return to pot.", "Season with fish sauce and sugar. Adjust to taste — it should be rich, slightly sweet, slightly salty.", "Cook egg noodles according to package. Reserve a handful of dry noodles.", "Fry the reserved dry noodles in hot oil until puffed and crispy (30 seconds).", "Fry shallots until golden and crispy.", "Serve noodles in bowls, ladle curry over top. Garnish with crispy noodles, fried shallots, pickled greens, cilantro, and lime."],
+        "pro_tips": ["Use Mae Ploy or Maesri red curry paste for the most authentic flavor.", "The crispy noodle topping is mandatory — it adds essential texture contrast.", "Make it a day ahead if you can — the flavors deepen overnight."]
+      }
+    },
+    {
+      "name": "Laser Wolf",
+      "neighborhood": "Williamsburg",
+      "cuisine": "Israeli",
+      "yelp_url": "https://www.yelp.com/biz/laser-wolf-brooklyn",
+      "website": "https://www.laserwolfnyc.com",
+      "signature_dish": {
+        "name": "Lamb Kebab with Charred Eggplant",
+        "description": "Laser Wolf's perfectly spiced lamb kebabs grilled over charcoal, served alongside their smoky, silky charred eggplant with tahini. Michael Solomonov's shipudiya (skewer house) concept at its best.",
+        "ingredients": ["1.5 lbs ground lamb (not too lean — 80/20)", "1 small onion, grated and squeezed dry", "2 cloves garlic, minced", "1 tsp cumin", "1 tsp coriander", "½ tsp cinnamon", "½ tsp allspice", "Pinch cayenne", "Salt and pepper", "2 large eggplants", "⅓ cup tahini", "2 tbsp lemon juice", "1 clove garlic, minced", "Olive oil", "Fresh parsley and sumac for garnish", "Pita bread"],
+        "instructions": ["Mix lamb with grated onion, garlic, cumin, coriander, cinnamon, allspice, cayenne, salt, and pepper. Rest 30 minutes.", "Shape into logs around flat metal skewers (or make oval patties if no skewers).", "Grill over high heat (charcoal preferred), 3-4 minutes per side.", "For eggplant: char whole eggplants directly on gas burner flame or under broiler, turning often, until completely collapsed and skin is blackened (15 min).", "Scoop out flesh, discard skin. Drain excess liquid.", "Chop eggplant roughly. Mix with tahini, lemon juice, garlic, salt, and olive oil.", "Spread eggplant on plates, top with kebabs.", "Drizzle with olive oil, sprinkle with sumac and parsley. Serve with warm pita."],
+        "pro_tips": ["Grate and SQUEEZE the onion dry — wet onion makes the kebab fall apart.", "The eggplant must be truly charred — burnt skin = smoky flesh. Don't be timid.", "Rest the meat mixture before shaping — it binds better when cold."]
+      }
+    },
+    {
+      "name": "Via Carota",
+      "neighborhood": "West Village",
+      "cuisine": "Italian",
+      "yelp_url": "https://www.yelp.com/biz/via-carota-new-york",
+      "website": "https://www.viacarota.com",
+      "signature_dish": {
+        "name": "Insalata Verde",
+        "description": "Via Carota's legendary green salad — deceptively simple, impossibly addictive. A mix of tender greens, fresh herbs, shaved vegetables, and a bright lemon vinaigrette. The salad that made people wait 2 hours for a table.",
+        "ingredients": ["4 cups mixed tender greens (butter lettuce, frisée, arugula)", "1 cup fresh herb leaves (parsley, dill, mint, basil — mix what you have)", "1 small fennel bulb, shaved paper-thin", "2 celery stalks, shaved with a peeler", "1 small cucumber, thinly sliced", "¼ cup extra-virgin olive oil (the best you have)", "2 tbsp fresh lemon juice", "1 tsp Dijon mustard", "Flaky sea salt and fresh black pepper", "Shaved Parmigiano-Reggiano (optional)"],
+        "instructions": ["Wash and thoroughly dry all greens and herbs. Cold, dry greens are essential.", "Shave fennel and celery paper-thin using a mandoline or sharp peeler.", "Make vinaigrette: whisk lemon juice, mustard, salt, and pepper. Slowly drizzle in olive oil while whisking.", "In a large bowl, gently toss greens, herbs, fennel, celery, and cucumber.", "Dress lightly — add vinaigrette a little at a time, tossing gently. You want every leaf kissed, not drowned.", "Finish with flaky salt, cracked pepper, and shaved parm if using.", "Serve immediately on a chilled plate."],
+        "pro_tips": ["The secret is the QUALITY of ingredients — this salad has nowhere to hide. Use the best olive oil and freshest greens you can find.", "Chill your serving plates — a cold salad on a cold plate stays crisp longer.", "Via Carota uses about 50/50 greens to herbs. Don't skimp on the herbs — they ARE the flavor."]
+      }
+    }
+  ]
+}

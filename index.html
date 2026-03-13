@@ -8,217 +8,59 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --bg: #faf7f2;
-      --card: #ffffff;
-      --text: #2c2c2c;
-      --text-secondary: #6b6b6b;
-      --accent: #e85d3a;
-      --accent-hover: #d14e2d;
-      --tag-bg: #fef0eb;
-      --tag-text: #c24a28;
-      --border: #e8e4de;
-      --shadow: 0 2px 20px rgba(0,0,0,0.06);
-      --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+      --bg: #faf7f2; --card: #ffffff; --text: #2c2c2c; --text-secondary: #6b6b6b;
+      --accent: #e85d3a; --accent-hover: #d14e2d; --tag-bg: #fef0eb; --tag-text: #c24a28;
+      --border: #e8e4de; --shadow: 0 2px 20px rgba(0,0,0,0.06); --shadow-lg: 0 8px 40px rgba(0,0,0,0.1);
+      --nyc-accent: #1a1a2e; --nyc-gold: #d4a853;
     }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+    header { text-align: center; padding: 3rem 1.5rem 1rem; max-width: 600px; }
+    header h1 { font-family: 'DM Serif Display', serif; font-size: 2.8rem; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    header p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.5; }
 
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    /* Tabs */
+    .tabs { display: flex; gap: 0; margin: 1.5rem auto 0; border-radius: 12px; overflow: hidden; border: 2px solid var(--border); max-width: 420px; width: calc(100% - 2rem); }
+    .tab { flex: 1; padding: 0.75rem 1rem; font-size: 0.9rem; font-weight: 600; font-family: inherit; border: none; cursor: pointer; transition: all 0.2s; background: var(--card); color: var(--text-secondary); }
+    .tab.active { background: var(--accent); color: white; }
+    .tab:hover:not(.active) { background: var(--tag-bg); }
+    .tab.nyc-tab.active { background: var(--nyc-accent); }
 
-    header {
-      text-align: center;
-      padding: 3rem 1.5rem 1rem;
-      max-width: 600px;
-    }
-
-    header h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.8rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-
-    header p {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      line-height: 1.5;
-    }
-
-    .source-pills {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-top: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .source-pills span {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 0.35rem 0.75rem;
-      border-radius: 100px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-    }
-
-    .btn-generate {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin: 2rem auto;
-      padding: 1rem 2.5rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      font-family: inherit;
-      background: var(--accent);
-      color: white;
-      border: none;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 15px rgba(232, 93, 58, 0.3);
-    }
-
-    .btn-generate:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(232, 93, 58, 0.4);
-    }
-
+    .btn-generate { display: inline-flex; align-items: center; gap: 0.5rem; margin: 1.5rem auto; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600; font-family: inherit; background: var(--accent); color: white; border: none; border-radius: 100px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(232,93,58,0.3); }
+    .btn-generate:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,93,58,0.4); }
     .btn-generate:active { transform: translateY(0); }
-
     .btn-generate.spinning .icon { animation: spin 0.6s ease; }
-
+    .btn-generate.nyc-mode { background: var(--nyc-accent); box-shadow: 0 4px 15px rgba(26,26,46,0.3); }
+    .btn-generate.nyc-mode:hover { background: #2a2a4e; box-shadow: 0 6px 20px rgba(26,26,46,0.4); }
     @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-    .recipe-card {
-      background: var(--card);
-      border-radius: 20px;
-      box-shadow: var(--shadow-lg);
-      max-width: 560px;
-      width: calc(100% - 2rem);
-      margin: 0 auto 3rem;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s ease;
-    }
+    .recipe-card { background: var(--card); border-radius: 20px; box-shadow: var(--shadow-lg); max-width: 600px; width: calc(100% - 2rem); margin: 0 auto 1rem; overflow: hidden; opacity: 0; transform: translateY(20px); transition: all 0.4s ease; }
+    .recipe-card.visible { opacity: 1; transform: translateY(0); }
+    .recipe-card .thumbnail { width: 100%; height: 280px; object-fit: cover; display: none; }
+    .recipe-card .content { padding: 2rem; }
+    .recipe-card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+    .recipe-card .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.3rem 0.65rem; border-radius: 6px; background: var(--tag-bg); color: var(--tag-text); }
+    .recipe-card .tag.nyc { background: var(--nyc-accent); color: var(--nyc-gold); }
+    .recipe-card h2 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 0.4rem; line-height: 1.2; }
+    .recipe-card .restaurant-line { font-size: 0.95rem; color: var(--nyc-gold); font-weight: 600; margin-bottom: 0.75rem; display: none; }
+    .recipe-card .description { color: var(--text-secondary); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; }
+    .recipe-card h3 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-secondary); margin-bottom: 0.75rem; }
+    .ingredients-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .ingredient { font-size: 0.85rem; padding: 0.4rem 0.75rem; background: var(--bg); border-radius: 8px; color: var(--text); }
 
-    .recipe-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* Instructions & Tips (NYC only) */
+    .instructions-section, .tips-section { display: none; margin-bottom: 1.5rem; }
+    .instructions-section.visible, .tips-section.visible { display: block; }
+    .instructions-section ol { padding-left: 1.2rem; }
+    .instructions-section li, .tips-section li { font-size: 0.9rem; line-height: 1.6; margin-bottom: 0.5rem; color: var(--text); }
+    .tips-section ul { list-style: none; padding: 0; }
+    .tips-section li::before { content: "💡 "; }
 
-    .recipe-card .thumbnail {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: none;
-    }
-
-    .recipe-card .content {
-      padding: 2rem;
-    }
-
-    .recipe-card .tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .recipe-card .tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 0.3rem 0.65rem;
-      border-radius: 6px;
-      background: var(--tag-bg);
-      color: var(--tag-text);
-    }
-
-    .recipe-card h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-
-    .recipe-card .description {
-      color: var(--text-secondary);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .recipe-card h3 {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-secondary);
-      margin-bottom: 0.75rem;
-    }
-
-    .ingredients-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .ingredient {
-      font-size: 0.85rem;
-      padding: 0.4rem 0.75rem;
-      background: var(--bg);
-      border-radius: 8px;
-      color: var(--text);
-    }
-
-    .recipe-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      transition: gap 0.2s ease;
-    }
-
+    .recipe-link { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: gap 0.2s ease; }
     .recipe-link:hover { gap: 0.7rem; }
-
-    .api-badge {
-      text-align: center;
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
+    .api-badge { text-align: center; margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-secondary); opacity: 0; transition: opacity 0.4s ease; margin-bottom: 2rem; }
     .api-badge.visible { opacity: 1; }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-    }
-
+    footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.8rem; }
     @media (max-width: 480px) {
       header h1 { font-size: 2.2rem; }
       header { padding: 2rem 1rem 0.5rem; }
@@ -232,17 +74,16 @@
 
 <header>
   <h1>What Should I Make? 🍳</h1>
-  <p>Stuck in a dinner rut? Let fate decide. Recipes inspired by the best food publications on the internet.</p>
-  <div class="source-pills">
-    <span>Delish</span>
-    <span>NYT Cooking</span>
-    <span>Bon Appétit</span>
-    <span>+ Surprise Picks</span>
-  </div>
+  <p>Stuck in a dinner rut? Let fate decide. Recipes inspired by the best food publications and NYC's hottest restaurants.</p>
 </header>
 
-<button class="btn-generate" onclick="generateRecipe()">
-  <span class="icon">🎲</span> Give Me a Recipe
+<div class="tabs">
+  <button class="tab active" onclick="switchMode('classic')">🍴 Classic Recipes</button>
+  <button class="tab nyc-tab" onclick="switchMode('nyc')">🗽 NYC's Best Dishes</button>
+</div>
+
+<button class="btn-generate" id="generateBtn" onclick="generateRecipe()">
+  <span class="icon">🎲</span> <span id="btnText">Give Me a Recipe</span>
 </button>
 
 <div class="recipe-card" id="recipeCard">
@@ -250,9 +91,18 @@
   <div class="content">
     <div class="tags" id="tags"></div>
     <h2 id="recipeName"></h2>
+    <div class="restaurant-line" id="restaurantLine"></div>
     <p class="description" id="description"></p>
     <h3>Ingredients</h3>
     <div class="ingredients-grid" id="ingredients"></div>
+    <div class="instructions-section" id="instructionsSection">
+      <h3>How to Make It</h3>
+      <ol id="instructions"></ol>
+    </div>
+    <div class="tips-section" id="tipsSection">
+      <h3>Pro Tips</h3>
+      <ul id="tips"></ul>
+    </div>
     <a class="recipe-link" id="recipeLink" href="#" target="_blank" rel="noopener">
       View Full Recipe →
     </a>
@@ -281,15 +131,45 @@ const CURATED = [
   {name:"Lemon Ricotta Pancakes",source:"Delish",category:"Breakfast",description:"Cloud-like pancakes with ricotta for fluffiness and lemon zest for brightness. Weekend brunch perfection.",ingredients:["ricotta","flour","eggs","lemon zest","lemon juice","sugar","baking powder","vanilla","butter","maple syrup"],url:"https://www.delish.com/search/?q=lemon+ricotta+pancakes"},
   {name:"Miso Salmon",source:"NYT Cooking",category:"Weeknight Dinner",description:"Sweet white miso glaze caramelizes under the broiler into a savory, slightly charred crust. 10 minutes active time.",ingredients:["salmon fillets","white miso","mirin","soy sauce","sugar","ginger","rice","scallions"],url:"https://cooking.nytimes.com/search?q=miso+glazed+salmon"},
   {name:"One-Pot Creamy Tuscan Orzo",source:"Delish",category:"Weeknight Dinner",description:"Sun-dried tomatoes, spinach, and parmesan melt into creamy orzo. One pot, 25 minutes, zero complaints.",ingredients:["orzo","sun-dried tomatoes","spinach","garlic","chicken broth","heavy cream","parmesan","Italian seasoning"],url:"https://www.delish.com/search/?q=tuscan+orzo"},
-  {name:"Thai Basil Beef (Pad Krapow)",source:"Bon Appétit",category:"Weeknight Dinner",description:"Ground beef stir-fried with holy basil, chilies, and garlic. Served over rice with a crispy fried egg. Bangkok street food at home.",ingredients:["ground beef","Thai basil","Thai chilies","garlic","soy sauce","fish sauce","oyster sauce","sugar","egg","jasmine rice"],url:"https://www.bonappetit.com/search?q=thai+basil+beef"},
+  {name:"Thai Basil Beef (Pad Krapow)",source:"Bon Appétit",category:"Weeknight Dinner",description:"Ground beef stir-fried with holy basil, chilies, and garlic. Served over rice with a crispy fried egg.",ingredients:["ground beef","Thai basil","Thai chilies","garlic","soy sauce","fish sauce","oyster sauce","sugar","egg","jasmine rice"],url:"https://www.bonappetit.com/search?q=thai+basil+beef"},
   {name:"Basque Burnt Cheesecake",source:"NYT Cooking",category:"Baking",description:"Crustless, intentionally 'burnt,' impossibly creamy. The cheesecake that doesn't try to be perfect — and is.",ingredients:["cream cheese","sugar","eggs","heavy cream","flour","vanilla","salt"],url:"https://cooking.nytimes.com/search?q=basque+burnt+cheesecake"},
   {name:"Green Goddess Salad",source:"Delish",category:"Salad",description:"The TikTok salad that actually lives up to the hype. Crunchy cabbage and cucumbers in a creamy herb dressing.",ingredients:["cabbage","cucumber","green onion","basil","chives","spinach","lemon juice","olive oil","rice vinegar","walnuts"],url:"https://www.delish.com/search/?q=green+goddess+salad"},
   {name:"Shakshuka",source:"NYT Cooking",category:"Breakfast",description:"Eggs poached in a spiced tomato-pepper sauce. Eaten with crusty bread for maximum sauce-sopping potential.",ingredients:["eggs","canned tomatoes","bell pepper","onion","garlic","cumin","paprika","cayenne","feta","cilantro","crusty bread"],url:"https://cooking.nytimes.com/recipes/1014721-shakshuka-with-feta"},
   {name:"Crispy Rice Bowls with Salmon",source:"Bon Appétit",category:"Weeknight Dinner",description:"Sushi-restaurant-quality crispy rice topped with spicy salmon, avocado, and sriracha mayo. Addictive.",ingredients:["sushi rice","salmon","avocado","sriracha","mayo","soy sauce","rice vinegar","sesame seeds","nori","cucumber"],url:"https://www.bonappetit.com/search?q=crispy+rice+salmon"},
-  {name:"Mississippi Pot Roast",source:"Delish",category:"Weekend Project",description:"Chuck roast slow-cooked with ranch, au jus, butter, and pepperoncini. Sounds weird. Tastes legendary. Falls apart with a look.",ingredients:["chuck roast","ranch seasoning","au jus mix","butter","pepperoncini"],url:"https://www.delish.com/search/?q=mississippi+pot+roast"}
+  {name:"Mississippi Pot Roast",source:"Delish",category:"Weekend Project",description:"Chuck roast slow-cooked with ranch, au jus, butter, and pepperoncini. Sounds weird. Tastes legendary.",ingredients:["chuck roast","ranch seasoning","au jus mix","butter","pepperoncini"],url:"https://www.delish.com/search/?q=mississippi+pot+roast"}
 ];
 
 const MEAL_DB_URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+const NYC_DISHES = [
+  {name:"Old Monk Dal",restaurant:"Adda",neighborhood:"Long Island City",cuisine:"Indian",description:"Adda's legendary black lentil dal, slow-cooked for 24 hours until impossibly creamy. Named after the beloved Indian rum.",ingredients:["1 cup whole black urad dal","3 tbsp butter","2 tbsp heavy cream","1 can crushed tomatoes","1 large onion, diced","4 cloves garlic","1 inch ginger","1 tsp cumin seeds","1 tsp Kashmiri chili powder","1 tsp garam masala","½ tsp turmeric"],instructions:["Soak dal overnight, drain and rinse.","Cook dal until soft and breaking apart (1 hr simmering or 30 min pressure cooker).","In a separate pan, heat butter. Add cumin seeds until they crackle.","Add onion, cook until deeply golden (12 min). Add garlic and ginger.","Add tomatoes, chili powder, turmeric, garam masala. Cook until oil separates.","Combine masala with dal. Simmer on lowest heat 30+ minutes.","Finish with remaining butter, cream, and salt."],tips:["The secret is TIME — real dal makhani simmers for hours.","A pinch of dried fenugreek leaves (kasuri methi) at the end is the restaurant secret."]},
+  {name:"Jollof Rice with Suya-Spiced Prawns",restaurant:"Tatiana by Kwame Onwuachi",neighborhood:"Lincoln Center",cuisine:"Afro-Caribbean",description:"Chef Kwame Onwuachi's stunning take on West African jollof rice, topped with suya-spiced grilled prawns. James Beard Award winner.",ingredients:["2 cups long-grain rice","1 lb large prawns","1 can fire-roasted tomatoes","1 red bell pepper","1 habanero (whole)","1 large onion","3 tbsp tomato paste","2 cups chicken stock","2 tbsp ground peanuts","1 tsp each: smoked paprika, coriander, garlic powder, onion powder"],instructions:["Blend tomatoes, bell pepper, half the onion, garlic, and ginger into a paste.","Fry remaining onion until golden. Add tomato paste, cook 3 min.","Add blended mixture, cook 20 min until reduced.","Add stock, paprika, and whole habanero. Bring to boil.","Add rice, stir once, cover tightly. Cook on lowest heat 25-30 min.","Mix suya spice: ground peanuts, garlic powder, onion powder, cayenne, coriander.","Coat prawns in suya spice. Sear 2 min per side.","Fluff rice, top with prawns."],tips:["Don't stir the rice after the initial stir — you want the smoky bottom crust.","Toast the suya spice in a dry pan before coating prawns."]},
+  {name:"Bone-In Prime Rib with Dripping Fries",restaurant:"Hawksmoor",neighborhood:"Gramercy",cuisine:"Steakhouse",description:"London's legendary steakhouse brought their signature dry-aged prime rib to NYC. Served with beef-dripping triple-cooked fries.",ingredients:["3-4 lb bone-in prime rib roast","Flaky sea salt and black pepper","2 lbs Yukon Gold potatoes","¼ cup beef drippings or tallow","Vegetable oil for frying","1 cup crème fraîche","Fresh horseradish","1 tbsp Dijon mustard"],instructions:["Temp prime rib 2 hours before cooking. Season generously.","Roast at 250°F until internal 120°F (3-4 hours). Rest 30 min.","Triple-cook fries: simmer potatoes until just tender (10 min).","First fry at 300°F for 5 min. Cool.","Final fry at 375°F until golden (3-4 min). Toss with beef drippings.","Sear rested prime rib in screaming hot cast iron for crust.","Mix crème fraîche, horseradish, and mustard for sauce."],tips:["The triple-cook method is non-negotiable for crispy fries.","Dry-age at home: salt the roast uncovered in fridge for 3-4 days."]},
+  {name:"Burrata Pizza",restaurant:"L'Industrie Pizzeria",neighborhood:"Williamsburg",cuisine:"Pizza",description:"L'Industrie's most Instagrammed item — thin-crust pizza topped with a whole ball of burrata, cherry tomatoes, basil, and Mike's Hot Honey.",ingredients:["1 lb pizza dough","½ cup San Marzano tomato sauce","1 ball fresh burrata (8oz)","1 cup cherry tomatoes, halved","Fresh basil","Hot honey","Extra-virgin olive oil","Flaky sea salt"],instructions:["Preheat oven max (500-550°F) with pizza stone for 1 hour.","Stretch dough to 12-inch round.","Spread thin sauce layer, scatter cherry tomatoes.","Bake 8-12 min until charred and bubbly.","Place whole burrata in center of hot pizza.","Drizzle generously with hot honey and olive oil.","Tear basil over top, finish with flaky salt."],tips:["Let burrata come to room temperature before placing on pizza.","A pizza steel gets hotter than a stone for better char.","Hot honey is essential — sweet, spicy, creamy is the magic trio."]},
+  {name:"Chrysanthemum Lasagna",restaurant:"Don Angie",neighborhood:"West Village",cuisine:"Italian-American",description:"Don Angie's show-stopping pinwheel lasagna, sliced crosswise to reveal a chrysanthemum flower pattern. A visual masterpiece.",ingredients:["1 lb fresh lasagna sheets","2 cups ricotta","2 cups mozzarella","1 cup parmesan","1 lb ground beef","½ lb ground pork","1 can San Marzano tomatoes","1 onion","1 cup red wine","1 egg","Fresh basil"],instructions:["Make meat sauce: brown meats, add onion, garlic, tomato paste. Deglaze with wine. Add tomatoes, simmer 1 hour.","Mix ricotta with egg, half the parmesan, salt, pepper, basil.","Lay out pasta sheets. Spread ricotta, meat sauce, then mozzarella.","Roll each sheet tightly into a cylinder.","Slice into 1.5-inch pinwheels.","Arrange pinwheels cut-side up in concentric circles in a round dish.","Spoon sauce between pinwheels. Top with remaining cheese.","Bake at 375°F covered 30 min, then uncovered 15 min."],tips:["Use a round dish — concentric circles create the flower pattern.","Freeze rolls 20 min before slicing for cleaner cuts.","Fresh pasta sheets are essential — dried won't roll."]},
+  {name:"Champaran Meat",restaurant:"Dhamaka",neighborhood:"Lower East Side",cuisine:"Indian (Regional)",description:"Dhamaka's fiery Bihar-style mutton curry — sealed in a clay pot with nothing but meat, mustard oil, and an avalanche of chilis. No water, no tomatoes.",ingredients:["2 lbs bone-in lamb shoulder, chunked","⅓ cup mustard oil","15 dried red chilis","2 large onions, sliced","10 cloves garlic, smashed","2 inches ginger, sliced","1 tbsp cumin seeds","4 green cardamom pods","4 cloves","1 cinnamon stick","1 cup full-fat yogurt"],instructions:["Heat mustard oil until it smokes, then cool slightly.","Add whole spices and let them crackle.","Add dried chilis, toast 30 seconds.","Add onions, cook until deeply browned (15 min).","Add garlic, ginger, cook 3 min.","Sear lamb on high heat until browned.","Add yogurt one spoonful at a time, stirring between.","Cover tightly. Cook on lowest heat 2-3 hours.","Do NOT open the lid until done."],tips:["Goat is traditional and more flavorful than lamb.","If your pot doesn't seal well, wrap the lid in foil.","This is NOT a mild dish. Serve with plain rice or thick rotis."]},
+  {name:"Whole Butterflied Trout",restaurant:"Theodora",neighborhood:"Fort Greene",cuisine:"Mediterranean",description:"Theodora's stunning whole trout, butterflied and pan-roasted until the skin is shatteringly crispy, finished with brown butter, capers, and herbs.",ingredients:["2 whole trout, butterflied","4 tbsp butter","2 tbsp capers","1 lemon","2 tbsp parsley","1 tbsp dill","1 tbsp chives","2 cloves garlic, sliced","Olive oil","Flour for dusting"],instructions:["Pat trout completely dry. Season flesh side. Dust skin lightly with flour.","Heat skillet over medium-high with olive oil.","Place trout skin-side down. Press gently for first minute.","Cook 4-5 min until skin is deeply golden. Flip, cook 1-2 min more.","In same pan, cook butter until foamy and nutty brown (2 min).","Add capers, garlic, and lemon juice.","Pour brown butter over fish. Shower with herbs and flaky salt."],tips:["Dry fish = crispy skin. Pat aggressively with paper towels.","Don't rush brown butter — it goes from brown to burnt in seconds."]},
+  {name:"Khao Soi",restaurant:"Thai Diner",neighborhood:"Nolita",cuisine:"Thai-American",description:"Thai Diner's rich Northern Thai coconut curry noodle soup — golden broth, egg noodles, tender chicken, crispy fried noodles on top.",ingredients:["1 lb chicken thighs","2 cans coconut milk","2 cups chicken stock","3 tbsp red curry paste","1 tbsp yellow curry powder","1 tbsp turmeric","2 tbsp fish sauce","1 tbsp palm sugar","1 lb fresh egg noodles","4 shallots, sliced","Lime, cilantro, pickled mustard greens"],instructions:["Fry curry paste, curry powder, and turmeric 2 min.","Add thick coconut milk, cook 5 min until oil separates.","Add chicken, remaining coconut milk, stock. Simmer 20 min.","Remove chicken, shred, return to pot.","Season with fish sauce and sugar.","Cook egg noodles. Reserve some dry noodles.","Fry dry noodles in hot oil until puffed (30 sec). Fry shallots until golden.","Serve with crispy noodles, fried shallots, pickled greens, cilantro, lime."],tips:["Use Mae Ploy or Maesri red curry paste for authentic flavor.","Crispy noodle topping is mandatory for texture contrast.","Make a day ahead — flavors deepen overnight."]},
+  {name:"Lamb Kebab with Charred Eggplant",restaurant:"Laser Wolf",neighborhood:"Williamsburg",cuisine:"Israeli",description:"Laser Wolf's perfectly spiced lamb kebabs over charcoal, with smoky charred eggplant and tahini. Michael Solomonov's shipudiya concept at its best.",ingredients:["1.5 lbs ground lamb","1 small onion, grated and squeezed dry","2 cloves garlic","1 tsp each: cumin, coriander","½ tsp each: cinnamon, allspice","2 large eggplants","⅓ cup tahini","2 tbsp lemon juice","Olive oil, parsley, sumac","Pita bread"],instructions:["Mix lamb with grated onion, garlic, spices. Rest 30 min.","Shape into logs on skewers or oval patties.","Grill over high heat, 3-4 min per side.","Char whole eggplants on burner flame until collapsed (15 min).","Scoop flesh, mix with tahini, lemon, garlic, salt, olive oil.","Spread eggplant on plates, top with kebabs.","Drizzle olive oil, sprinkle sumac and parsley. Serve with warm pita."],tips:["Grate and SQUEEZE onion dry — wet onion makes kebab fall apart.","Eggplant must be truly charred — burnt skin = smoky flesh.","Rest meat mixture before shaping — binds better cold."]},
+  {name:"Insalata Verde",restaurant:"Via Carota",neighborhood:"West Village",cuisine:"Italian",description:"Via Carota's legendary green salad — deceptively simple, impossibly addictive. The salad that made people wait 2 hours for a table.",ingredients:["4 cups mixed tender greens (butter lettuce, frisée, arugula)","1 cup fresh herbs (parsley, dill, mint, basil)","1 small fennel, shaved thin","2 celery stalks, shaved","1 small cucumber, sliced","¼ cup best olive oil","2 tbsp lemon juice","1 tsp Dijon mustard","Flaky salt, black pepper","Shaved Parmigiano (optional)"],instructions:["Wash and thoroughly dry all greens and herbs.","Shave fennel and celery paper-thin with mandoline.","Whisk lemon juice, mustard, salt, pepper. Drizzle in olive oil.","Gently toss greens, herbs, fennel, celery, cucumber.","Dress lightly — every leaf kissed, not drowned.","Finish with flaky salt, pepper, shaved parm.","Serve immediately on a chilled plate."],tips:["The secret is QUALITY — this salad has nowhere to hide. Best olive oil, freshest greens.","Chill your plates — cold salad on cold plate stays crisp.","Via Carota uses 50/50 greens to herbs. Don't skimp on herbs."]}
+];
+let currentMode = 'classic';
+
+function switchMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(mode === 'nyc' ? '.nyc-tab' : '.tab:first-child').classList.add('active');
+  const btn = document.getElementById('generateBtn');
+  const btnText = document.getElementById('btnText');
+  if (mode === 'nyc') {
+    btn.classList.add('nyc-mode');
+    btnText.textContent = "NYC's Best Dishes";
+  } else {
+    btn.classList.remove('nyc-mode');
+    btnText.textContent = 'Give Me a Recipe';
+  }
+  document.getElementById('recipeCard').classList.remove('visible');
+  document.getElementById('apiBadge').classList.remove('visible');
+}
 
 async function fetchMealDB() {
   try {
@@ -298,26 +178,20 @@ async function fetchMealDB() {
     const meal = data.meals[0];
     const ingredients = [];
     for (let i = 1; i <= 20; i++) {
-      const ing = meal[`strIngredient${i}`];
-      const measure = meal[`strMeasure${i}`];
-      if (ing && ing.trim()) ingredients.push(`${(measure||'').trim()} ${ing.trim()}`.trim());
+      const ing = meal['strIngredient'+i];
+      const measure = meal['strMeasure'+i];
+      if (ing && ing.trim()) ingredients.push(((measure||'').trim()+' '+ing.trim()).trim());
     }
     return {
-      name: meal.strMeal,
-      source: meal.strArea + ' cuisine',
-      category: meal.strCategory,
-      description: meal.strInstructions.split('\r\n').filter(Boolean).slice(0, 2).join(' ').slice(0, 250) + '...',
-      ingredients,
-      url: meal.strSource || meal.strYoutube || null,
-      thumbnail: meal.strMealThumb
+      name: meal.strMeal, source: meal.strArea+' cuisine', category: meal.strCategory,
+      description: meal.strInstructions.split('\r\n').filter(Boolean).slice(0,2).join(' ').slice(0,250)+'...',
+      ingredients, url: meal.strSource||meal.strYoutube||null, thumbnail: meal.strMealThumb
     };
-  } catch {
-    return CURATED[Math.floor(Math.random() * CURATED.length)];
-  }
+  } catch { return CURATED[Math.floor(Math.random()*CURATED.length)]; }
 }
 
 async function generateRecipe() {
-  const btn = document.querySelector('.btn-generate');
+  const btn = document.getElementById('generateBtn');
   btn.classList.add('spinning');
   setTimeout(() => btn.classList.remove('spinning'), 600);
 
@@ -326,42 +200,61 @@ async function generateRecipe() {
   card.classList.remove('visible');
   badge.classList.remove('visible');
 
-  const useCurated = Math.random() < 0.7;
-  const recipe = useCurated
-    ? CURATED[Math.floor(Math.random() * CURATED.length)]
-    : await fetchMealDB();
+  let recipe, isNyc = false, isMealDB = false;
+
+  if (currentMode === 'nyc') {
+    recipe = NYC_DISHES[Math.floor(Math.random()*NYC_DISHES.length)];
+    isNyc = true;
+  } else {
+    isMealDB = Math.random() >= 0.7;
+    recipe = isMealDB ? await fetchMealDB() : CURATED[Math.floor(Math.random()*CURATED.length)];
+  }
 
   setTimeout(() => {
     const thumb = document.getElementById('thumbnail');
-    if (recipe.thumbnail) {
-      thumb.src = recipe.thumbnail;
-      thumb.style.display = 'block';
+    if (recipe.thumbnail) { thumb.src = recipe.thumbnail; thumb.style.display = 'block'; }
+    else { thumb.style.display = 'none'; }
+
+    const tags = document.getElementById('tags');
+    if (isNyc) {
+      tags.innerHTML = '<span class="tag nyc">'+recipe.cuisine+'</span><span class="tag nyc">'+recipe.neighborhood+'</span>';
     } else {
-      thumb.style.display = 'none';
+      tags.innerHTML = '<span class="tag">'+recipe.source+'</span><span class="tag">'+recipe.category+'</span>';
     }
 
-    document.getElementById('tags').innerHTML =
-      `<span class="tag">${recipe.source}</span><span class="tag">${recipe.category}</span>`;
     document.getElementById('recipeName').textContent = recipe.name;
+
+    const restLine = document.getElementById('restaurantLine');
+    if (isNyc && recipe.restaurant) {
+      restLine.textContent = '📍 '+recipe.restaurant+' — '+recipe.neighborhood;
+      restLine.style.display = 'block';
+    } else { restLine.style.display = 'none'; }
+
     document.getElementById('description').textContent = recipe.description;
-    document.getElementById('ingredients').innerHTML =
-      recipe.ingredients.map(i => `<span class="ingredient">${i}</span>`).join('');
+    document.getElementById('ingredients').innerHTML = recipe.ingredients.map(i => '<span class="ingredient">'+i+'</span>').join('');
+
+    const instrSection = document.getElementById('instructionsSection');
+    const tipsSection = document.getElementById('tipsSection');
+    if (isNyc && recipe.instructions) {
+      instrSection.classList.add('visible');
+      document.getElementById('instructions').innerHTML = recipe.instructions.map(s => '<li>'+s+'</li>').join('');
+    } else { instrSection.classList.remove('visible'); }
+    if (isNyc && recipe.tips) {
+      tipsSection.classList.add('visible');
+      document.getElementById('tips').innerHTML = recipe.tips.map(t => '<li>'+t+'</li>').join('');
+    } else { tipsSection.classList.remove('visible'); }
 
     const link = document.getElementById('recipeLink');
-    if (recipe.url) {
-      link.href = recipe.url;
-      link.style.display = 'inline-flex';
-    } else {
-      link.style.display = 'none';
-    }
+    if (recipe.url) { link.href = recipe.url; link.style.display = 'inline-flex'; link.textContent = 'View Full Recipe →'; }
+    else if (isNyc) { link.style.display = 'none'; }
+    else { link.style.display = 'none'; }
 
-    badge.textContent = useCurated ? '' : '✨ Surprise pick from TheMealDB';
-    badge.classList.toggle('visible', !useCurated);
+    badge.textContent = isMealDB ? '✨ Surprise pick from TheMealDB' : (isNyc ? '🗽 Copycat recipe from NYC\'s hottest restaurants' : '');
+    badge.classList.toggle('visible', isMealDB || isNyc);
 
     card.classList.add('visible');
   }, 300);
 }
 </script>
-
 </body>
 </html>
