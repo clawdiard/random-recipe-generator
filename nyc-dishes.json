@@ -139,6 +139,48 @@
         "instructions": ["Wash and thoroughly dry all greens and herbs. Cold, dry greens are essential.", "Shave fennel and celery paper-thin using a mandoline or sharp peeler.", "Make vinaigrette: whisk lemon juice, mustard, salt, and pepper. Slowly drizzle in olive oil while whisking.", "In a large bowl, gently toss greens, herbs, fennel, celery, and cucumber.", "Dress lightly — add vinaigrette a little at a time, tossing gently. You want every leaf kissed, not drowned.", "Finish with flaky salt, cracked pepper, and shaved parm if using.", "Serve immediately on a chilled plate."],
         "pro_tips": ["The secret is the QUALITY of ingredients — this salad has nowhere to hide. Use the best olive oil and freshest greens you can find.", "Chill your serving plates — a cold salad on a cold plate stays crisp longer.", "Via Carota uses about 50/50 greens to herbs. Don't skimp on the herbs — they ARE the flavor."]
       }
+    },
+    {
+      "name": "Kabawa",
+      "neighborhood": "East Village",
+      "cuisine": "Caribbean",
+      "yelp_url": "https://www.yelp.com/biz/kabawa-new-york",
+      "website": "https://www.kabawanyc.com",
+      "signature_dish": {
+        "name": "Pepper Shrimp with Hibiscus Oil",
+        "description": "Kabawa's showstopper — royal red shrimp blushing with dried hibiscus and bright orange pepper oil, served alongside Paul Carmichael's legendary buss up and shut roti. Caribbean fine dining at its most soulful.",
+        "ingredients": ["1.5 lbs large shell-on shrimp (head-on if possible)", "3 tbsp neutral oil", "2 scotch bonnet peppers, seeded and minced", "1 habanero pepper, seeded and minced", "6 cloves garlic, sliced", "1 inch ginger, grated", "2 tbsp dried hibiscus flowers (flor de Jamaica)", "1 tbsp tomato paste", "1 tbsp brown sugar", "2 tbsp butter", "Juice of 2 limes", "1 tsp allspice", "1 tsp smoked paprika", "½ tsp ground coriander", "Salt to taste", "2 scallions, sliced", "Fresh thyme sprigs"],
+        "instructions": ["Make hibiscus oil: steep dried hibiscus flowers in ½ cup warm neutral oil for 30 minutes. Strain and reserve the vivid red oil.", "Season shrimp with allspice, smoked paprika, coriander, and salt. Let sit 15 minutes.", "Heat 2 tbsp oil in a large skillet over high heat until smoking.", "Sear shrimp in a single layer, 1.5 minutes per side until shells are charred. Remove and set aside.", "Lower heat to medium. Add butter, garlic, ginger, and peppers. Cook 2 minutes until fragrant.", "Add tomato paste and brown sugar. Stir and cook 1 minute.", "Deglaze with lime juice. Return shrimp to pan, toss to coat.", "Add thyme sprigs and scallions. Toss 30 seconds more.", "Plate shrimp and drizzle generously with the hibiscus oil.", "Serve with buss up and shut roti or warm flatbread."],
+        "pro_tips": ["Shell-on shrimp are essential — the shells char and hold sauce better, and you eat with your hands.", "For the buss up and shut roti: make a simple paratha dough, cook on a hot tawa, then 'bust it up' by clapping it between your hands.", "Dried hibiscus flowers are cheap at any Latin grocery — they give a gorgeous crimson color and tart floral flavor to the oil.", "Adjust scotch bonnet to your heat tolerance, but this dish should have KICK."]
+      }
+    },
+    {
+      "name": "Roscioli NYC",
+      "neighborhood": "West Village",
+      "cuisine": "Roman Italian",
+      "yelp_url": "https://www.yelp.com/biz/roscioli-nyc-new-york",
+      "website": "https://www.roscioli.com",
+      "signature_dish": {
+        "name": "Carbonara",
+        "description": "Roscioli's Roman carbonara — silky egg sauce clinging to every strand of rigatoni, studded with crispy guanciale. No cream, no shortcuts, just the real thing done at the highest level. The dish that made this Roman import famous in NYC.",
+        "ingredients": ["1 lb rigatoni (or tonnarelli/spaghetti)", "6 oz guanciale, cut into ½-inch batons", "6 large egg yolks", "2 whole eggs", "1.5 cups finely grated Pecorino Romano (about 4 oz)", "½ cup finely grated Parmigiano-Reggiano", "Freshly cracked black pepper (generous)", "Kosher salt for pasta water"],
+        "instructions": ["Bring a large pot of well-salted water to boil.", "In a cold skillet, arrange guanciale in a single layer. Turn heat to medium-low and render slowly until fat is translucent and meat is crispy (10-12 minutes). Do NOT rush this.", "Remove guanciale to a plate. Reserve the rendered fat in the pan — you'll need about 3 tbsp.", "In a bowl, whisk egg yolks and whole eggs with both cheeses and a very generous amount of black pepper until smooth and creamy.", "Cook pasta 1 minute short of al dente. Reserve 2 cups pasta water before draining.", "Add drained pasta to the skillet with guanciale fat over LOW heat. Toss to coat.", "Remove pan completely from heat. Wait 30 seconds for it to cool slightly.", "Pour egg and cheese mixture over the pasta. Toss vigorously, adding splashes of pasta water, until a glossy, creamy sauce forms that coats every piece.", "Add guanciale back. Toss once more.", "Serve immediately with extra Pecorino and black pepper on top."],
+        "pro_tips": ["The pan MUST be off direct heat when you add the egg mixture — too hot and you get scrambled eggs. The residual heat is enough.", "Guanciale (cured pork jowl) is non-negotiable. Pancetta is a distant second. Bacon is not carbonara.", "Roscioli's secret is the ratio: more yolks than whole eggs creates that impossibly rich, sticky sauce.", "Save more pasta water than you think you need — it's the key to adjusting consistency."]
+      }
+    },
+    {
+      "name": "Muku",
+      "neighborhood": "Tribeca",
+      "cuisine": "Japanese Kaiseki",
+      "yelp_url": "https://www.yelp.com/biz/muku-new-york",
+      "website": "https://www.mukutribeca.com",
+      "signature_dish": {
+        "name": "Handmade Soba with Dashi",
+        "description": "Muku's toothy, woodsy buckwheat soba noodles made with grains sourced from chef Manabu Asanuma's family farm in Yamagata Prefecture. Served with a rich dashi for dipping, this dish anchors the kaiseki experience at NYC's fastest Michelin-starred restaurant.",
+        "ingredients": ["200g buckwheat flour (soba-ko, ideally stone-ground)", "50g all-purpose flour", "110ml cold water", "For dashi: 4 cups water", "1 piece kombu (6 inches)", "2 cups katsuobushi (bonito flakes, packed)", "For tsuyu dipping sauce: 1 cup dashi", "3 tbsp soy sauce", "2 tbsp mirin", "1 tsp sugar", "Toppings: grated daikon, wasabi, sliced scallions, toasted nori"],
+        "instructions": ["Make dashi: soak kombu in 4 cups cold water for 30 minutes. Bring to a gentle simmer (do NOT boil). Remove kombu just before boiling.", "Add bonito flakes. Simmer 30 seconds, then turn off heat. Let steep 10 minutes. Strain through cheesecloth without pressing.", "Make tsuyu: combine 1 cup dashi, soy sauce, mirin, and sugar. Bring to a brief boil, then cool completely. Chill.", "For soba: mix buckwheat and all-purpose flour. Make a well. Add water gradually, mixing with chopsticks until shaggy.", "Knead dough firmly for 5-8 minutes until smooth and pliable. It will feel drier than wheat dough — that's correct.", "Rest dough wrapped in plastic 30 minutes.", "Roll out on a floured surface to 1-2mm thickness. Fold into thirds.", "Cut into thin noodles (about 2mm wide) with a sharp knife. Dust with flour to prevent sticking.", "Boil noodles in a large pot of unsalted water for 60-90 seconds. They cook fast.", "Immediately drain and rinse under cold running water, rubbing gently to remove starch.", "Serve noodles on a bamboo mat or plate with ice. Serve tsuyu in small cups alongside grated daikon, wasabi, scallions, and nori."],
+        "pro_tips": ["The 80/20 buckwheat-to-wheat ratio (ni-hachi soba) is the classic balance — enough gluten to hold together, enough buckwheat for flavor.", "Stone-ground buckwheat flour has dramatically more flavor than regular. Japanese grocery stores or online specialty shops carry it.", "Do NOT overcook — 60-90 seconds max. The noodles should have real bite (the 'toothy' quality Muku is known for).", "Cold soba must be rinsed thoroughly — the starch rinse is what gives them that clean, distinct texture."]
+      }
     }
   ]
 }
